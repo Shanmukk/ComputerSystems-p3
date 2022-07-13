@@ -12,7 +12,6 @@ import socket
 import mimetypes
 import subprocess
 import multiprocessing
-import threading
 
 class HTTPServer:
 
@@ -83,8 +82,7 @@ def main():
     # test harness checks for your web server on the localhost and on port 8888
     # do not change the host and port
     # you can change  the HTTPServer object if you are not following OOP
-    #HTTPServer('127.0.0.1', 8888)
-    p1 = threading.Thread(target=HTTPServer, args=('127.0.0.1', 8881, ))
+    p1 = multiprocessing.Process(target=HTTPServer, args=('127.0.0.1', 8888, ))
     p1.start()
     p1.join()
     print("done")
